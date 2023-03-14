@@ -7,7 +7,13 @@ drop table Intro
 drop table _User 
 drop table _URL
 */
-
+/*
+按照老姜的吩咐，这里会包含所有的资源，然后被 番剧那些资源引用
+插入两空引用是为了给那些没有番剧或漫画改变的资源引用
+其他插入的东西也一样
+顺便给类型定了一个约束，一定要是 番剧、漫画、轻小说 的
+给 UID、_Type的ISBN 开了自增，以后插入就不用输入了
+*/
 --建立类型表
 create table _Type(
 ISBN bigint primary key identity,
@@ -27,7 +33,6 @@ Light_country nvarchar(50))
 --插一个空的链接，懂吧
 insert into _URL(ISBN,	bilibili,	Acfun,	YinHua,	Light_country) 
 values			(1,		' ',		' ',	' ',	' ')
-
 
 --建立简介表
 create table Intro(
